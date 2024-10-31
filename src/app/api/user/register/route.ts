@@ -27,8 +27,6 @@ export async function POST(request: NextRequest) {
     const emailavailability = await UserModel.find({ email }).exec();
     const usernameAvailability = await UserModel.find({ username }).exec();
 
-    console.log(emailavailability[0]._id.toString());
-
     if (emailavailability.length > 0) {
       throw new Error("Email used!");
     }
@@ -47,7 +45,7 @@ export async function POST(request: NextRequest) {
       throw new Error("Something went wrong!");
     }
 
-    const hashedPassword = await bcrypt.hash(password, salt);
+    const hashedPassword = await bcrypt.hash(password, +salt);
 
     await UserModel.create({
       email,
@@ -55,7 +53,10 @@ export async function POST(request: NextRequest) {
       password: hashedPassword,
     });
 
-    return NextResponse.json("Masuk");
+    return NextResponse.json({
+      status: "success",
+      msg: "Account Created Sucessful",
+    });
   } catch (error: any) {
     return NextResponse.json(
       { status: "failed", msg: error.message },

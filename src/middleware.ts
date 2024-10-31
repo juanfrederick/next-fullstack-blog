@@ -6,6 +6,10 @@ export async function middleware(request: NextRequest) {
   try {
     const authorization = await headers().get("authorization");
 
+    const allCookies = request.cookies.getAll();
+
+    console.log(allCookies);
+
     if (!authorization) {
       return NextResponse.json(
         { status: "failed", msg: "Need Authentication" },
