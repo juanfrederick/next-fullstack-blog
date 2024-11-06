@@ -4,11 +4,7 @@ import { verifyToken } from "./lib/jsonwebtoken";
 
 export async function middleware(request: NextRequest) {
   try {
-    const authorization = await headers().get("authorization");
-
-    const allCookies = request.cookies.getAll();
-
-    console.log(allCookies);
+    const authorization = (await headers()).get("authorization");
 
     if (!authorization) {
       return NextResponse.json(
@@ -44,5 +40,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/api/test/:path*"],
+  matcher: ["/api/test/:path*", "/api/user/checkUser"],
 };

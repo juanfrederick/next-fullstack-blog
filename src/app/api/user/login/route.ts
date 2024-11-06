@@ -42,7 +42,7 @@ export async function POST(reqeust: NextRequest) {
     return NextResponse.json({
       status: "success",
       msg: "Login success!",
-      payload: jwtoken,
+      payload: { token: jwtoken, email: email },
     });
   } catch (error: any) {
     return NextResponse.json(

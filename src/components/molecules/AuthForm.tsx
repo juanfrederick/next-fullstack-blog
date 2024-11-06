@@ -1,5 +1,5 @@
 "use client";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useContext, useState } from "react";
 import InputField from "../atoms/InputField";
 import EmailIcon from "../icon/EmailIcon";
 import PasswordIcon from "../icon/PasswordIcon";
@@ -8,6 +8,7 @@ import { userLogin } from "@/lib/axios";
 import { redirect } from "next/navigation";
 import UsernameIcon from "../icon/UsernameIcon";
 import { useRouter } from "next/navigation";
+import AuthContext from "@/lib/context/AuthContext";
 
 interface Props {
   type: "login" | "register";
@@ -25,6 +26,8 @@ function AuthForm({ type, submitHandler }: Props) {
   const [rePassword, setRePassword] = useState<string>("");
   const [error, setError] = useState<null | string>("");
   const [isLoading, setIsloading] = useState<boolean>(false);
+
+  const authContext = useContext(AuthContext);
 
   const router = useRouter();
 
@@ -100,6 +103,14 @@ function AuthForm({ type, submitHandler }: Props) {
 
         if (response.status === "success") {
           localStorage.setItem("token", JSON.stringify(response.payload));
+          console.log(response.payload);
+
+          if (authContext) {
+            authContext.setIsLogin(true);
+            authContext.setUser({
+              email: response.payload.email,
+            });
+          }
           router.push("/");
         }
       } catch (error: any) {

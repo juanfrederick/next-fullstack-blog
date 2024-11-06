@@ -5,9 +5,11 @@ const api = axios.create({
 });
 
 const auth = () => {
-  const token = localStorage.getItem("token");
+  const storageData = localStorage.getItem("token");
 
-  if (token) {
+  if (storageData) {
+    const token = JSON.parse(storageData).token;
+
     return {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -45,6 +47,15 @@ export async function userRegister(
 ) {
   return api
     .post("/api/user/register", { email, username, password })
+    .then((res) => res.data)
+    .catch((err) => err.response.data);
+}
+
+export async function checkUser() {
+  const header = auth();
+
+  return api
+    .post("/api/user/checkUser", {}, header)
     .then((res) => res.data)
     .catch((err) => err.response.data);
 }
