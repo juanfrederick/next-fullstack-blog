@@ -28,7 +28,7 @@ const ProtectedRoute = ({ children }: Props) => {
 
       getUser();
     }
-  }, [authContext]);
+  }, [authContext, router]);
 
   return <>{authContext?.isLogin && children}</>;
 };

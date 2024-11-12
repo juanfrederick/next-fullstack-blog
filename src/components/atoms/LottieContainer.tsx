@@ -3,7 +3,7 @@ import Lottie from "lottie-react";
 import React from "react";
 
 interface Props {
-  animationData: any;
+  animationData: object;
 }
 
 function LottieContainer({ animationData }: Props) {

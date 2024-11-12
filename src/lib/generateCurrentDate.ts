@@ -1,5 +1,3 @@
-import React from "react";
-
 const generateCurrentDate = () => {
   const options: Intl.DateTimeFormatOptions = {
     year: "numeric",

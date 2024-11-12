@@ -33,14 +33,14 @@ const BlogForm = ({
     (e: React.ChangeEvent<HTMLInputElement>) => {
       setTitle(e.target.value);
     },
-    [title]
+    [setTitle]
   );
 
   const backgroundChangeHander = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       setBackground(e.target.value);
     },
-    [background]
+    [setBackground]
   );
 
   const handlerAddContent = (type: "header" | "text" | "image") => {
@@ -56,7 +56,7 @@ const BlogForm = ({
         return newContent;
       });
     },
-    [content]
+    [setContent]
   );
 
   const handlerRemoveContent = useCallback(
@@ -68,7 +68,7 @@ const BlogForm = ({
         return newContent;
       });
     },
-    [content]
+    [setContent]
   );
 
   const handlerCancel = () => {

@@ -3,7 +3,6 @@ import Jumbotron from "@/components/molecules/Jumbotron";
 import Navbar from "@/components/molecules/Navbar";
 import { checkUser } from "@/lib/axios";
 import AuthContext from "@/lib/context/AuthContext";
-import Link from "next/link";
 import { useContext, useEffect } from "react";
 
 export default function Home() {

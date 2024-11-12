@@ -1,5 +1,6 @@
 import { postContentType } from "@/interface/interface";
 import generateCurrentDate from "@/lib/generateCurrentDate";
+import Image from "next/image";
 import React from "react";
 
 interface Props {
@@ -25,20 +26,23 @@ const BlogPreview = ({ title, background, content }: Props) => {
             {content.map((val, index) => {
               if (val.type === "header") {
                 return (
-                  <h2 className="text-lg md:text-xl font-semibold">
+                  <h2 className="text-lg md:text-xl font-semibold" key={index}>
                     {val.content}
                   </h2>
                 );
               } else if (val.type === "text") {
                 return (
-                  <p className="whitespace-pre-line mb-4">{val.content}</p>
+                  <p className="whitespace-pre-line mb-4" key={index}>
+                    {val.content}
+                  </p>
                 );
               } else if (val.type === "image") {
                 return (
-                  <img
+                  <Image
                     className="mx-auto my-4 md:w-1/2"
                     src={val.content}
                     alt={`Image for ${title}`}
+                    key={index}
                   />
                 );
               }

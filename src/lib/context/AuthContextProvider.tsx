@@ -8,9 +8,8 @@ interface Props {
 }
 
 function AuthContextProvider({ children }: Props) {
-  const [user, setUser] = useState<{ email: string; token: string }>({
+  const [user, setUser] = useState<{ email: string }>({
     email: "",
-    token: "",
   });
   const [isLogin, setIsLogin] = useState(false);
 

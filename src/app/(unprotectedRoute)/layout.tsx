@@ -33,7 +33,7 @@ export default function UnprotectedRouteLayout({
     } else {
       router.push("/");
     }
-  }, [authContext]);
+  }, [authContext, router]);
 
   if (isLoading) return <LoadingPage />;
 
