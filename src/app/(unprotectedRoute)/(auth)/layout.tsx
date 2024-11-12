@@ -1,5 +1,7 @@
 import LottieContainer from "@/components/atoms/LottieContainer";
 import LoginAnimation from "@/assets/login-animation.json";
+import BackIcon from "@/components/icon/BackIcon";
+import Link from "next/link";
 
 export default function AuthLayout({
   children,
@@ -23,6 +25,13 @@ export default function AuthLayout({
         <LottieContainer animationData={LoginAnimation} />
       </div>
       <div className="w-full md:w-[60%] h-full relative background-image">
+        <Link
+          href={"/"}
+          className="btn btn-sm absolute top-2 left-2 bg-opacity-50"
+        >
+          <BackIcon />
+          Back to Blog
+        </Link>
         {children}
       </div>
     </section>

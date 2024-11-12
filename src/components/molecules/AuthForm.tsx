@@ -4,8 +4,6 @@ import InputField from "../atoms/InputField";
 import EmailIcon from "../icon/EmailIcon";
 import PasswordIcon from "../icon/PasswordIcon";
 import validator from "validator";
-import { userLogin } from "@/lib/axios";
-import { redirect } from "next/navigation";
 import UsernameIcon from "../icon/UsernameIcon";
 import { useRouter } from "next/navigation";
 import AuthContext from "@/lib/context/AuthContext";

@@ -18,3 +18,8 @@ export type UserDbType = {
   updatedAt: string;
   __v: number;
 };
+
+export type postContentType = {
+  type: "header" | "text" | "image";
+  content: string;
+};
